@@ -45,6 +45,8 @@ const enviarJson = () => {
  }).then(res=> res.json()).then(json => console.log(json))
 }
 
-enviarJson();
+//salvarJson()
+//editarJson()
+//enviarJson()
 
 
