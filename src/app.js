@@ -1,5 +1,7 @@
 const fetch = require('node-fetch')
 const fs = require('fs')
+const FormData = require('form-data')
+
 
 const decode = require('./modules/decode')
 const sha1s = require('./modules/sha1')
@@ -24,20 +26,25 @@ const editarJson = () => {
 
     datas.decifrado = decifrado
     datas.resumo_criptografico = sha1
-    console.log(datas)
+    console.log(decifrado)
+    console.log(sha1)
 
     fs.writeFile('./util/answer.json', JSON.stringify(datas), (err)=>{
-      console.log(err)
+      //console.log(err)
     })
 })}
 
-editarJson();
+const enviarJson = () => {
+  //const stream = fs.createReadStream('./util/answer.json')
+  const formData = new FormData()
+  formData.append('answer',fs.createReadStream('./util/answer.json'))
+
+ fetch('https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=285c2072e7015979a414b2b1c4f0132be5598dfa',{
+   method: 'post',
+   body: formData
+ }).then(res=> res.json()).then(json => console.log(json))
+}
+
+enviarJson();
 
 
-/*
-  const obj = JSON.parse(json)
-  const decifrado = decode(obj.cifrado,1)
-  const sha1 = sha1s(cifrado)
-
-  console.log(decifrado)
-  */
