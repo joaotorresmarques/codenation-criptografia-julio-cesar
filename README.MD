@@ -16,6 +16,17 @@ enviarJson()
 - Enviar o arquivo para a endpoint indicada utilizando o metodo POST.
 
 
+## Bibliotecas
+Library | Description
+---|---
+node-fetch | <https://www.npmjs.com/package/node-fetch>
+fs | <https://nodejs.org/api/fs.html>
+form-data | <https://www.npmjs.com/package/form-data>
+crypto | <https://www.npmjs.com/package/crypto-js>
+decodeFrase | <https://github.com/vespene/codenation-cifra-cesar-js/blob/master/index.js>
+
+
+
 # Criptografia de Júlio César
 
 ##### Fonte: <https://www.codenation.dev/acceleration/reactnative-online-1/challenge/dev-ps>
@@ -55,16 +66,12 @@ HTTP para a url abaixo:
 
 `https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=SEU_TOKEN`
 
-Para encontrar o seu token , acesse a plataforma Codenation, faça o login e a informação
-estará na tela, conforme no exemplo abaixo:
-
-![Obter token](https://s3-us-west-1.amazonaws.com/codenation-cli/doc/images/token.png)
 
 O resultado da requisição vai ser um JSON conforme o exemplo:
 
 ```javascript
 {
-  "numero_casas": 10,
+  "numero_casas": 1,
   "token":"token_do_usuario",
   "cifrado": "texto criptografado",
   "decifrado": "aqui vai o texto decifrado",
